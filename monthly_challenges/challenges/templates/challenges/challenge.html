@@ -1,12 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{title | title}} challenge</title>
-  </head>
-  <body>
-    <h1>{{title | title}} Challenge</h1>
-    <p>{{text}}</p>
-  </body>
-</html>
+{% extends "base.html" %} 
+{% load static %}
+
+
+
+{% block css_files %}
+<link rel='stylesheet' href="{% static 'challenges/challenge.css' %}"/>
+<link rel='stylesheet' href="{% static 'challenges/includes/header.css' %}"/>
+
+{% endblock  %}
+
+{% block page_title %}{{title}}
+     Challenge 
+{% endblock %} 
+    
+{% block content %}
+    {% include "./includes/header.html" %}
+      <h1>{{title | title}} Challenge</h1>
+      <p class='fallback'>{{text}}</p>
+      {% if title == 'december' %}
+      <p class='fallback'>None chalange</p>
+       {% endif %}  
+{% endblock %}
